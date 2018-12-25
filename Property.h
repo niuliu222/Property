@@ -17,10 +17,19 @@ private:\
 #define PropertyReadOnly(type, name, init_value) \
 	PropertyPrivate(type, name, init_value)\
 public:\
-	PropertyGetter(type, name)\
-	PropertyGetterReference(type, name)
+	PropertyGetter(type, name)
 
 #define PropertyReadWrite(type, name, init_value) \
 	PropertyReadOnly(type, name, init_value)\
 public:\
+	PropertySetter(type, name)
+
+#define PropertyObjectReadOnly(type, name, init_value) \
+	PropertyReadOnly(type, name, init_value)\
+public:\
+	PropertyGetterReference(type, name)
+
+#define PropertyObjectReadWrite(type, name, init_value) \
+	PropertyObjectReadOnly(type, name, init_value)\
+public:
 	PropertySetter(type, name)

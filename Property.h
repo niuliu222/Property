@@ -39,7 +39,7 @@ public:\
 	PropertySetter(type, name)
 
 #define PropertyObjectReadOnlyNoInit(type, name) \
-	PropertyReadOnly(type, name)\
+	PropertyReadOnlyNoInit(type, name)\
 public:\
 	PropertyGetterReference(type, name)
 

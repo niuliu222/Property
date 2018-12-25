@@ -7,6 +7,8 @@
 
 #define PropertyGetterReference(type, name) const type & Get##name##ConstReference(){return name;}
 
+#define PropertyGetterReferenceNoConstant(type, name) type & Get##name##Reference(){return name;}
+
 #define PropertySetter(type, name) void Set##name(const type & _value){name = _value;}
 
 
@@ -38,10 +40,17 @@ public:\
 public:\
 	PropertySetter(type, name)
 
+#define PropertyObjectReadOnly(type, name, init_value) \
+	PropertyReadOnly(type, name, init_value)\
+public:\
+	PropertyGetterReference(type, name)\
+	PropertyGetterReferenceNoConstant(type, name)
+
 #define PropertyObjectReadOnlyNoInit(type, name) \
 	PropertyReadOnlyNoInit(type, name)\
 public:\
-	PropertyGetterReference(type, name)
+	PropertyGetterReference(type, name)\
+	PropertyGetterReferenceNoConstant(type, name)
 
 #define PropertyObjectReadWrite(type, name, init_value) \
 	PropertyObjectReadOnly(type, name, init_value)\

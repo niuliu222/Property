@@ -33,8 +33,8 @@ public:\
 public:\
 	PropertySetter(type, name)
 
-#define PropertyReadWrite(type, name, init_value) \
-	PropertyReadOnly(type, name, init_value)\
+#define PropertyReadWriteNoInit(type, name) \
+	PropertyReadOnlyNoInit(type, name)\
 public:\
 	PropertySetter(type, name)
 
